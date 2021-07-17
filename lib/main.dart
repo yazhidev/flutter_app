@@ -9,24 +9,27 @@ class Paper extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: CustomPaint(
-        painter: PaperPainter(),
-      ),
+      child: CustomPaint(painter: PaperPainter()),
     );
   }
-
 }
 
 class PaperPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = new Paint();
-    canvas.drawCircle(Offset(100, 100), 10, paint);
+    Paint paint = new Paint()
+      ..strokeWidth = 10
+      ..style = PaintingStyle.stroke
+      ..color = Colors.blue;
+    Path path = new Path();
+    path.moveTo(100, 100);
+    path.lineTo(200, 0);
+    canvas.drawPath(path, paint);
+    canvas.drawCircle(Offset(200, 200), 50, paint);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-
 }
 
 class MyApp extends StatelessWidget {
