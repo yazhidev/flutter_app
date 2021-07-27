@@ -42,7 +42,29 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  StatefulElement createElement() {
+    return super.createElement();
+  }
+
+  @override
+  _MyHomePageState createState() {
+    return _MyHomePageState();
+  }
+}
+
+class MyText extends Text {
+
+  MyText(String data) : super(data);
+
+  @override
+  StatelessElement createElement() {
+    return super.createElement();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return super.build(context);
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -67,6 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+    // ConstrainedBox
+    // Align
+    // DecoratedBox
+    return Center(
+
+      child: Container(width: 100, height: 100, color: Colors.red),
+    );
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -93,12 +122,11 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            MyText(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            MyText(
+              '$_counter'
             ),
           ],
         ),
